@@ -1,0 +1,42 @@
+#include <stdio.h>
+ struct fraction{
+     int num[20];
+     int den[20];
+     int sum;
+     int n;
+ };
+ struct fraction input()
+ {
+     struct fraction s;
+     printf("enter the number of fractions");
+     scanf("%d",&s.n);
+     printf("enter the numerators");
+     for(int i=0;i<s.n;i++)
+     {
+        scanf("%d",&s.num[i]);
+     }
+     printf("enter the denominators");
+     for(int i=0;i<s.n;i++)
+     {
+        scanf("%d",&s.den[i]);
+     }
+     return s;
+ }
+ void compute(struct fraction s)
+ {
+    
+ }
+ void output(struct fraction s)
+ {
+     printf("the fractions are");
+    for(int i=0;i<s.n;i++)
+    {
+      printf("%d/%d\n",s.num[i],s.den[i]);
+    }
+ }
+ int main()
+ {
+    struct fraction s; 
+     s=input();
+     output(s);
+ } 
