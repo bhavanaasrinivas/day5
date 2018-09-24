@@ -40,3 +40,47 @@
      s=input();
      output(s);
  } 
+********************************************************************************************************************************************
+#include <stdio.h>
+struct fraction
+{
+  int numerator[20];
+  int denomenator[20];
+};
+struct frac
+{
+  int n;
+  int d;
+  struct fraction *s;
+  int size;
+};
+struct frac getfractions ()
+{
+  struct frac f;
+  printf ("enter the number of fractions");
+  scanf ("%d",&f.size);
+  for (int i = 0; i < f.size; i++)
+    {
+      printf ("enter the numerator");
+      scanf ("%d", &f.s[i].numerator);
+      printf ("enter the denomenator");
+      scanf ("%d", &f.s[i].denomenator);
+    }
+  return f;
+}
+struct frac fractionsum()
+{
+    f.n=f.s[0].numerator;
+    f.d=f.s[0].denomenator;
+    for(int i=0;i<f.size;i++)
+    {
+        f.d=f.d*f.s[i].denomenator;
+        f.n=f.n
+    }
+    
+}
+
+struct frac output ()
+  {
+
+  }
