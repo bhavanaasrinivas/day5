@@ -84,3 +84,63 @@ struct frac output ()
   {
 
   }
+****************************************************************************************************************************************
+#include<malloc.h>
+#include <stdio.h>
+#include<math.h>
+struct fraction
+{
+  int numerator;
+  int denomenator;
+};
+struct frac
+{
+  int n;
+  int d;
+  struct fraction *s;
+  int size;
+};
+
+struct frac getfractions ()
+{
+  struct frac f;
+  printf ("enter the number of fractions");
+  scanf ("%d",&f.size);
+  f.s=malloc(f.size*sizeof(struct fraction));
+  for (int i = 0; i < f.size; i++)
+    {
+      printf ("enter the numerator");
+      scanf ("%d", &f.s[i].numerator);
+      printf ("enter the denomenator");
+      scanf ("%d", &f.s[i].denomenator);
+    }
+  return f;
+}
+struct frac fractionsum(struct frac f)
+{
+    int result,gcd;
+    f.n=f.s[0].numerator;
+    f.d=f.s[0].denomenator;
+    for(int i=1;i<f.size;i++)
+    {
+        f.d=f.d*f.s[i].denomenator;
+        f.n=f.n*f.s[i].denomenator+f.s[i].numerator*f.d;
+    }
+    result=gcd(f.n,f.d);
+    f.n=f.n/result;
+    f.d=f.d/result;
+    return f;
+}
+
+struct frac output (struct frac f)
+  {
+      printf("%d,%d",f.n,f.d);
+  }
+int main()
+{
+    struct frac a;
+    a=getfractions();
+    a=fractionsum(a);
+    output(a);
+    return 0;
+}
