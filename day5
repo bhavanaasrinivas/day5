@@ -368,3 +368,77 @@ struct fractions output (struct fractions f)
       output(f);
       return 0;
  }
+ *********************************************************************************************************************************************
+solution program (correct program without errors)
+
+#include <stdio.h>
+
+struct frac
+{
+  int numerator;
+  int denomenator;
+};
+struct fractions
+{
+
+  struct frac s[100];
+  int size;
+};
+
+
+struct fractions input()
+{
+  struct fractions f;
+  printf ("enter the number of fractions");
+  scanf ("%d",&f.size);
+
+  for (int i = 0; i < f.size; i++)
+    {
+      printf ("enter the numerator");
+      scanf ("%d", &f.s[i].numerator);
+      printf ("enter the denomenator");
+      scanf ("%d", &f.s[i].denomenator);
+    }
+  return f;
+}
+struct frac compute(struct fractions f)
+{
+    struct frac s;
+    int gcd;
+    s.numerator=f.s[0].numerator;
+    s.denomenator=f.s[0].denomenator;
+    for(int i=1;i<f.size;i++)
+    {
+         s.numerator=s.numerator*f.s[i].denomenator+f.s[i].numerator*s.denomenator;
+        s.denomenator=s.denomenator*f.s[i].denomenator;
+    }
+
+    for(int i=1; i <= s.numerator && i <= s.denomenator; ++i)
+    {
+
+        if(s.numerator%i==0 && s.denomenator%i==0)
+            gcd = i;
+    }
+
+    s.numerator=s.numerator/gcd;
+    s.denomenator=s.denomenator/gcd;
+    return s;
+}
+
+void output (struct frac s)
+
+  {
+
+      printf("%d,%d",s.numerator,s.denomenator);
+
+  }
+  int main()
+  {
+      struct fractions f;
+      struct frac s;
+      f=input();
+      s=compute(f);
+      output(s);
+      return 0;
+ }
+*******************************************************************************************************************************************
